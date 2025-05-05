@@ -7,10 +7,17 @@ const ItemListWrapper = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch('http://103.87.66.188:3000/api/items')
-      .then(response => response.json())
-      .then(data => setItems(data))
-      .catch(error => console.error('Error fetching items:', error));
+    const fetchItems = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/items`);
+        const data = await res.json();
+        setItems(data);
+      } catch (error) {
+        console.error('Error fetching items:', error);
+      }
+    };
+
+    fetchItems();
   }, []);
 
   return <ItemList items={items} />;

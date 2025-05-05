@@ -31,7 +31,7 @@ const RekapitulasiPage: React.FC = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch(`http://103.87.66.188:3000/api/rekapitulasi?tahun=${tahun}&bulan=${bulan}`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/rekapitulasi?tahun=${tahun}&bulan=${bulan}`);
       if (response.ok) {
         const data = await response.json();
         setRekapitulasi(data);

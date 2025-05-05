@@ -30,7 +30,7 @@ export default function CreateTransaction() {
           harga_jual: parseFloat(transaction.harga_jual),
           jumlah: parseInt(transaction.jumlah)
         };
-        success = await postData('http://103.87.66.188:3000/api/items', newItem);
+        success = await postData(`${process.env.NEXT_PUBLIC_API_URL}api/items`, newItem);
       } else {
         // Create transaction (pembelian) for existing item
         const newTransaction = {

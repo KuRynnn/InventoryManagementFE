@@ -31,7 +31,7 @@ const POS: React.FC = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await fetch('http://103.87.66.188:3000/api/items');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/items`);
       if (response.ok) {
         const data = await response.json();
         setItems(data);
