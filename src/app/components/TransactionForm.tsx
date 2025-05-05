@@ -41,7 +41,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onSubmit, isLoading, 
   useEffect(() => {
     const loadItems = async () => {
       try {
-        const data = await fetchData('http://localhost:3000/api/items');
+        const data = await fetchData('http://103.87.66.188:3000/api/items');
         setItems(data);
       } catch (error) {
         console.error('Error fetching items:', error);
