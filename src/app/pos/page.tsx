@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -90,18 +89,17 @@ const POS: React.FC = () => {
   );
 
   const calculateItemTotal = (item: CartItem) => {
-    return (item.harga_jual * item.quantity) - item.discount;
+    return (item.harga_jual * item.quantity) + item.discount; // BUG: pakai "+" bukan "-"
   };
 
   const total = cart.reduce((sum, item) => sum + calculateItemTotal(item), 0);
-
   const change = parseFloat(receivedAmount) - total;
 
   const placeOrder = async () => {
     setIsLoading(true);
     try {
       for (const item of cart) {
-        const response = await fetch('http://localhost:3000/api/transactions', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/transactions`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -144,6 +142,7 @@ const POS: React.FC = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+
           <div className="flex mb-6 space-x-2 overflow-x-auto">
             {categories.map(category => (
               <button 
@@ -155,6 +154,7 @@ const POS: React.FC = () => {
               </button>
             ))}
           </div>
+
           <div className="grid grid-cols-3 gap-4">
             {filteredItems.map(item => (
               <button
@@ -209,6 +209,7 @@ const POS: React.FC = () => {
               <p className="text-black mt-1">Item Total: Rp {calculateItemTotal(item).toLocaleString()}</p>
             </div>
           ))}
+
           <div className="mt-6">
             <h3 className="text-xl font-bold text-black">Total: Rp {total.toLocaleString()}</h3>
             <div className="mt-2">
@@ -225,6 +226,7 @@ const POS: React.FC = () => {
             </div>
             <p className="mt-2 text-lg">Change: Rp {change >= 0 ? change.toLocaleString() : '0'}</p>
           </div>
+
           <button 
             className="mt-4 w-full bg-green-500 text-white py-2 rounded disabled:bg-gray-400"
             onClick={placeOrder}

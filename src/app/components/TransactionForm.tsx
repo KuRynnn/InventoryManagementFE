@@ -134,7 +134,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onSubmit, isLoading, 
 
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="kode_barang">
-          Kode Barang
+          Kode Barng
         </label>
         <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -150,7 +150,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onSubmit, isLoading, 
       </div>
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nama_barang">
-          Nama Barang
+          Nam Barang
         </label>
         <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -198,7 +198,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onSubmit, isLoading, 
       </div>
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="jumlah">
-          Jumlah
+          Jumlh
         </label>
         <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

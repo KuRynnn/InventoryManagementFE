@@ -35,11 +35,11 @@ export default function CreateTransaction() {
         // Create transaction (pembelian) for existing item
         const newTransaction = {
           item_id: transaction.item_id,
-          jenis_transaksi: 'pembelian',
+          jenis_transaksi: 'pembelian_stok',
           jumlah: parseInt(transaction.jumlah),
           harga_satuan: parseFloat(transaction.harga_beli)
         };
-        success = await postData('http://103.87.66.188:3000/api/transactions', newTransaction);
+        success = await postData(`${process.env.NEXT_PUBLIC_API_URL}api/transaction`, newTransaction); // 'transaction' bukan 'transactions'
       }
 
       if (success) {
